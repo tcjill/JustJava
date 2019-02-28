@@ -21,7 +21,7 @@ import java.text.NumberFormat;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
-    int quantity =2;
+    int quantity =1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +58,13 @@ public class MainActivity extends AppCompatActivity {
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
     public void submitOrder (View view){
-        displayPrice (quantity * 5);
+        int price = quantity * 5;
+        String priceMessage = "Total: $ " + price;
+        priceMessage = priceMessage + "\nThanks!";
+        displayMessage (priceMessage);
+    }
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText(message);
     }
 }
